@@ -1,0 +1,11 @@
+#+title: Notes
+
+* Delibrate practice topics
+** C++
+- ~std::string~
+- ~<sstream>~
+- passing by reference vs value
+- string formatting
+** Competitive programming
+- ~ONLINE_JUDGE~ macro
+- Fast I/O
