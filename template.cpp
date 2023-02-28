@@ -45,5 +45,6 @@ template <class T> void chmin(T &a, const T &b) { a = min(a, b); }
 int main() {
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(nullptr);
+
   return 0;
 }
