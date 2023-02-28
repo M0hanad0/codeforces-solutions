@@ -24,15 +24,17 @@ function test_solution() {
     cd "$1"
     $CXX $CXXFLAGS -o bin sol.cpp
 
-    diff -u <(./bin) expected.txt
+    for input in testing/input*.txt; do
+        diff -u <(./bin < "$input") "${input/input/expected}"
+    done
 
     if [[ $? != 0 ]]
     then
-        >&2 printf '\x1b[31mERROR:\x1b[0m '
-        >&2 echo "$1 failed tests"
+        >&2 printf '\x1b[31mFAILURE:\x1b[0m '
+        >&2 echo "$1"
     else
         >&2 printf '\x1b[32mSUCCESS:\x1b[0m '
-        echo "$1 passed tests"
+        echo "$(basename "$1")"
     fi
 
     cd - > /dev/null
