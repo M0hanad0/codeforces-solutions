@@ -24,7 +24,5 @@ int main(void) {
     std::cin >> word;
     std::cout << (too_long(word) ? abbr(word) : word) << "\n";
   }
-
-  std::cout << "\n";
   return 0;
 }
