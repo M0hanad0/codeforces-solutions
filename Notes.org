@@ -9,3 +9,4 @@
 ** Competitive programming
 - ~ONLINE_JUDGE~ macro
 - Fast I/O
+- Read the specification thoroughly

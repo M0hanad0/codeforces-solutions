@@ -21,7 +21,7 @@ const int INF = 1 << 29;
 typedef long long ll;
 
 #define DEBUG(x) cout << '>' << #x << ':' << x << endl;
-#define REP(i, n) for (int i = 0; i < (n); i++)
+#define REP(i, n) for (size_t i = 0; i < (n); i++)
 #define FOR(i, a, b) for (int i = (a); i <= (b); i++)
 #define FORD(i, a, b) for (int i = (a); i >= (b); i--)
 
