@@ -22,19 +22,42 @@ fi
 
 function test_solution() {
     cd "$1"
-    $CXX $CXXFLAGS -o bin sol.cpp
 
-    for input in testing/input*.txt; do
-        diff -u <(./bin < "$input") "${input/input/expected}"
-    done
+    name="$(basename "$1")"
 
-    if [[ $? != 0 ]]
+    if [ ! -f sol.cpp ]
     then
         >&2 printf '\x1b[31mFAILURE:\x1b[0m '
-        >&2 echo "$1"
+        echo "$name"
+        printf "\tno solution\n"
+        cd - > /dev/null
+        return 1
+    fi
+
+    if [ ! -d testing ]
+    then
+        echo "$name does not have tests"
+        cd - > /dev/null
+        return 1
+    fi
+
+
+    $CXX $CXXFLAGS -o bin sol.cpp
+
+    failed=0
+    for input in testing/input*.txt; do
+        if ! diff -u <(./bin < "$input") "${input/input/expected}"; then
+            failed=1
+        fi
+    done
+
+    if [[ failed -eq 1 ]]
+    then
+        >&2 printf '\x1b[31mFAILURE:\x1b[0m '
+        >&2 echo "$name"
     else
         >&2 printf '\x1b[32mSUCCESS:\x1b[0m '
-        echo "$(basename "$1")"
+        echo "$name"
     fi
 
     cd - > /dev/null
