@@ -6,6 +6,7 @@
 - ~<sstream>~
 - passing by reference vs value
 - string formatting
+- ~enum~s
 ** Competitive programming
 - ~ONLINE_JUDGE~ macro
 - Fast I/O
