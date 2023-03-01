@@ -43,6 +43,12 @@ function test_solution() {
 
 
     $CXX $CXXFLAGS -o bin sol.cpp
+    if [ $? -ne 0 ]
+    then
+        >&2 printf '\x1b[31mFAILURE:\x1b[0m '
+        echo "Compilation failed"
+        return 1
+    fi
 
     failed=0
     for input in testing/input*.txt; do
